@@ -17,8 +17,8 @@ pipeline {
         sh 'echo $FILE > date.txt'
       }
     }
-    stage('archiveArtifacts') {
-        artifacts: '**/*.txt', fingerprint:true
+    stage('Deliver') {
+        archiveArtifacts artifacts: '**/*.txt', fingerprint:true
     } 
     stage('Validation') {
         steps {
