@@ -1,0 +1,40 @@
+pipeline {
+  agent {
+     node { 
+        label 'node'
+     } 
+  }
+  options { 
+      timestamps(),
+      skipDefaultCheckout(true) }
+  tools {
+    maven 'maven-apache'
+  }
+  stages {
+    stage('Build') {
+      steps {
+        FILE=$(date +"%S-%M-%H-%m-%d-%y")
+        echo $FILE > date.txt
+        if ($? != 0) {
+            error "File not created"
+        }
+      }
+    }
+    stage('archiveArtifacts') {
+    } 
+    stage('Validation') {
+    }
+    stage('Deploy') {
+        steps {  
+            java --version && node -v
+            if ($? != 0) {
+                error "Missing component"
+            }
+        }
+    }
+  post {
+    always {
+      }
+    }
+  }
+}
