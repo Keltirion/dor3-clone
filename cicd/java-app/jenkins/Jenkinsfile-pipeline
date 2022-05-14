@@ -8,12 +8,12 @@ pipeline {
     maven 'maven-apache'
   }
   environment {
-      MVN_WORKDIR = 'java-app'
+      MVN_WORKDIR = 'cicd/java-app'
   }
   stages {
     stage('Maven Package') {
       steps {
-        dir('java-app'){
+        dir('cicd/java-app'){
           sh 'mvn package'
         }
       }
