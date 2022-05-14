@@ -26,7 +26,7 @@ pipeline {
   }
   post {
     always {
-      dir('java-app'){
+      dir('cicd/java-app'){
         step($class: 'JUnitResultArchiver', checksName: '', testResults: '**/surefire-reports/TEST-*.xml')
         step(followSymlinks: false, $class: 'ArtifactArchiver', artifacts: 'target/*.jar')
       }
