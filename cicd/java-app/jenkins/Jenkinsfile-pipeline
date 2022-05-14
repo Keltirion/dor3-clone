@@ -1,11 +1,11 @@
 pipeline {
   agent {
      node { 
-        label 'node01'
+        label 'node'
      } 
   }
   tools {
-    maven 'maven-apache-3.8.4'
+    maven 'maven-apache'
   }
   environment {
       MVN_WORKDIR = 'java-app'
