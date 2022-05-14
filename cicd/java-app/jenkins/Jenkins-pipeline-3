@@ -20,6 +20,14 @@ pipeline {
     stage('archiveArtifacts') {
     } 
     stage('Validation') {
+        steps {
+            script {
+                env.CONFIRMATION = input message: 'Continue? y/n',
+                    parameters: [string(defaultValue: '',
+                    descritpion: '',    
+                    name: 'Confirmation')]
+            }
+        }
     }
     stage('Deploy') {
         steps {  
