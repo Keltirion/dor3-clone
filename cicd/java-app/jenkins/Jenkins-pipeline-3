@@ -5,7 +5,7 @@ pipeline {
      } 
   }
   options { 
-      timestamps(),
+      timestamps()
       skipDefaultCheckout(true) }
   tools {
     maven 'maven-apache'
