@@ -14,12 +14,11 @@ pipeline {
     stage('Build') {
       steps {
         sh 'FILE=$(date +"%S-%M-%H-%m-%d-%y")'
-        sh 'echo $FILE > ./date.txt'
+        sh 'echo $FILE > date.txt'
       }
     }
     stage('archiveArtifacts') {
-        artifacts: './date.txt', fingerprint:true
-        junit 'build/reports/**/*.xml'
+        artifacts: '**/*.txt', fingerprint:true
     } 
     stage('Validation') {
         steps {
